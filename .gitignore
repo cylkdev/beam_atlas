@@ -21,3 +21,6 @@ beam_atlas-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Burrito binaries
+burrito_out/
