@@ -22,7 +22,7 @@ defmodule BeamAtlas.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [{:ex_mcp, "~> 0.1"}, {:jason, "~> 1.4"}]
+    [{:ex_mcp, github: "cylkdev/ex_mcp", branch: "main"}, {:jason, "~> 1.4"}]
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
