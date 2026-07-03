@@ -3,6 +3,19 @@
 A standalone Elixir MCP server that exports a target project's dependency,
 call, implementation, and runtime relationships as `{edges, dot}`.
 
+## Install
+
+Builds a self-contained [Burrito](https://github.com/burrito-elixir/burrito) binary
+and installs it to `/usr/local/bin/beam_atlas` (override with `BIN_DIR`). Requires
+Erlang/OTP >= 27, Elixir >= 1.18, and Burrito's build tools (zig, xz, 7z).
+
+```
+curl -fsSL https://raw.githubusercontent.com/cylkdev/beam_atlas/main/scripts/remote-install.sh | bash
+```
+
+From a checkout of this repo, use `scripts/install.sh` instead (or `scripts/build.sh`
+to just build the binaries into `burrito_out/`).
+
 ## Run
 
 ```
