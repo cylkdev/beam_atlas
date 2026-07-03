@@ -2,7 +2,7 @@ defmodule BeamAtlas.Tools.CallGraph do
   @moduledoc "MCP tool: function/module/application call graph via :xref."
   use ExMCP.Tool
 
-  import BeamAtlas.Tools.Reply
+  alias BeamAtlas.Tools.Reply
   alias BeamAtlas.{Target, Envelope}
   alias BeamAtlas.Analyzer.Calls
 
@@ -38,8 +38,8 @@ defmodule BeamAtlas.Tools.CallGraph do
         {:error, reason} -> Envelope.error(reason)
       end
 
-    text(payload)
+    Reply.text(payload)
   end
 
-  def call(args), do: text(Envelope.error({:bad_request, args}))
+  def call(args), do: Reply.text(Envelope.error({:bad_request, args}))
 end

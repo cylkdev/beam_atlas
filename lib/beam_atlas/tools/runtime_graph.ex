@@ -2,7 +2,7 @@ defmodule BeamAtlas.Tools.RuntimeGraph do
   @moduledoc "MCP tool: live supervision, process-link, or monitor graph of a running node."
   use ExMCP.Tool
 
-  import BeamAtlas.Tools.Reply
+  alias BeamAtlas.Tools.Reply
   alias BeamAtlas.Envelope
   alias BeamAtlas.Analyzer.Runtime
 
@@ -38,10 +38,10 @@ defmodule BeamAtlas.Tools.RuntimeGraph do
         {:error, reason} -> Envelope.error(reason)
       end
 
-    text(payload)
+    Reply.text(payload)
   end
 
-  def call(args), do: text(Envelope.error({:bad_request, args}))
+  def call(args), do: Reply.text(Envelope.error({:bad_request, args}))
 
   defp dir("links"), do: :undirected
   defp dir(_), do: :directed

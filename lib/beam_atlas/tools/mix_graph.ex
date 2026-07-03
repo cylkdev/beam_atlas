@@ -2,7 +2,7 @@ defmodule BeamAtlas.Tools.MixGraph do
   @moduledoc "MCP tool: Mix-native dependency graphs."
   use ExMCP.Tool
 
-  import BeamAtlas.Tools.Reply
+  alias BeamAtlas.Tools.Reply
   alias BeamAtlas.{Target, Envelope}
   alias BeamAtlas.Analyzer.MixGraphs
 
@@ -35,8 +35,8 @@ defmodule BeamAtlas.Tools.MixGraph do
         {:error, reason} -> Envelope.error(reason)
       end
 
-    text(payload)
+    Reply.text(payload)
   end
 
-  def call(args), do: text(Envelope.error({:bad_request, args}))
+  def call(args), do: Reply.text(Envelope.error({:bad_request, args}))
 end

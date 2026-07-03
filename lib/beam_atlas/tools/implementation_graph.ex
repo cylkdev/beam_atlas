@@ -2,7 +2,7 @@ defmodule BeamAtlas.Tools.ImplementationGraph do
   @moduledoc "MCP tool: behaviour and protocol implementation edges."
   use ExMCP.Tool
 
-  import BeamAtlas.Tools.Reply
+  alias BeamAtlas.Tools.Reply
   alias BeamAtlas.{Target, Envelope}
   alias BeamAtlas.Analyzer.Implementations
 
@@ -37,10 +37,10 @@ defmodule BeamAtlas.Tools.ImplementationGraph do
         {:error, reason} -> Envelope.error(reason)
       end
 
-    text(payload)
+    Reply.text(payload)
   end
 
-  def call(args), do: text(Envelope.error({:bad_request, args}))
+  def call(args), do: Reply.text(Envelope.error({:bad_request, args}))
 
   defp gather(target, "behaviours"), do: Implementations.behaviours(target)
   defp gather(target, "protocols"), do: Implementations.protocols(target)
