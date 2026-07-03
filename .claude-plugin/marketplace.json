@@ -1,0 +1,12 @@
+{
+  "name": "beam-atlas-plugins",
+  "owner": { "name": "Kurt Hogarth" },
+  "description": "BEAM/Elixir code-analysis MCP servers",
+  "plugins": [
+    {
+      "name": "beam-atlas",
+      "source": { "source": "github", "repo": "cylkdev/beam_atlas" },
+      "description": "Elixir relationship-graph MCP server (call, mix, implementation, runtime graphs)"
+    }
+  ]
+}

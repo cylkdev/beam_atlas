@@ -1,0 +1,9 @@
+{
+  "name": "beam-atlas",
+  "description": "Elixir relationship-graph MCP server: call, mix dependency, implementation, and runtime graphs as {edges, dot}",
+  "version": "0.1.0",
+  "author": { "name": "Kurt Hogarth" },
+  "homepage": "https://github.com/cylkdev/beam_atlas",
+  "repository": "https://github.com/cylkdev/beam_atlas",
+  "license": "MIT"
+}

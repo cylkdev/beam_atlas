@@ -1,0 +1,44 @@
+name: Release binaries
+
+# Builds Burrito-wrapped binaries for all targets and attaches them to the
+# GitHub release for the pushed tag. The plugin launcher
+# (bin/beam-atlas-launcher.sh) downloads these assets at first run.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "27"
+          elixir-version: "1.18"
+
+      - uses: mlugg/setup-zig@v2
+        with:
+          version: "0.15.2"
+
+      - name: Install xz and 7z
+        run: sudo apt-get update && sudo apt-get install -y xz-utils p7zip-full
+
+      - name: Build all targets
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+          mix deps.get
+          MIX_ENV=prod mix release --overwrite
+
+      - name: Upload release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" --generate-notes || true
+          gh release upload "${GITHUB_REF_NAME}" burrito_out/* --clobber

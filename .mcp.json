@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "beam-atlas": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/beam-atlas-launcher.sh",
+      "env": {
+        "BEAM_ATLAS_DATA_DIR": "${CLAUDE_PLUGIN_DATA}"
+      }
+    }
+  }
+}

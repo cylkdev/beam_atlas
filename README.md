@@ -3,7 +3,19 @@
 A standalone Elixir MCP server that exports a target project's dependency,
 call, implementation, and runtime relationships as `{edges, dot}`.
 
-## Install
+## Install as a Claude Code plugin
+
+```
+/plugin marketplace add cylkdev/beam_atlas
+/plugin install beam-atlas@beam-atlas-plugins
+```
+
+On first use the plugin downloads the platform binary from the matching GitHub
+release (macOS arm64/x86_64, Linux x86_64); if `beam_atlas` is already on your
+PATH it uses that instead. Release binaries are built by
+`.github/workflows/release.yml` when a `v*` tag is pushed.
+
+## Install from source
 
 Builds a self-contained [Burrito](https://github.com/burrito-elixir/burrito) binary
 and installs it to `/usr/local/bin/beam_atlas` (override with `BIN_DIR`). Requires
